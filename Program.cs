@@ -35,13 +35,12 @@ namespace AllCardsOnDeckCS
             var numberOfCards = deck.Count;
             //  for rightIndex from numberOfCards - 1 down to 1 do:
             // leftIndex = random integer that is greater than or equal to 0 and LESS than rightIndex. See the section "How do we get a random integer"
-            for (var rightIndex = numberOfCards - 1; rightIndex >= 0; rightIndex--)
+            for (var end = numberOfCards - 1; end >= 0; end--)
             {
-                var leftIndex = new Random().Next(0, rightIndex);
-                var rightCard = deck[rightIndex];
-                var leftCard = deck[leftIndex];
-                deck[rightIndex] = leftCard;
-                deck[leftIndex] = rightCard;
+                var somePlace = new Random().Next(0, end);
+                var copiedCard = deck[end];
+                deck[end] = deck[somePlace];
+                deck[somePlace] = copiedCard;
             }
             foreach (var num in deck)
             {
